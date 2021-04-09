@@ -1,0 +1,40 @@
+parameters:
+    firewall_import_yaml: '%kernel.project_dir%/src/ImportBundle/Resources/config/firewallImport/config.yml'
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        # automatically injects dependencies in your services
+        autowire: true
+        # automatically registers your services as commands, event subscribers, etc.
+        autoconfigure: true
+        # this means you cannot fetch services directly from the container via $container->get()
+        # if you need to do this, you can override this setting on individual services
+        bind:
+            $firewall_Import_yaml: '%firewall_import_yaml%'
+        public: false
+
+    # controllers are imported separately to make sure they're public
+    # and have a tag that allows actions to type-hint services
+    ImportBundle\Controller\:
+        resource: '../../Controller'
+        public: true
+        tags: ['controller.service_arguments']
+
+
+    # auto-register all commands as services
+    ImportBundle\Command\:
+        resource: '../../Command/*'
+        tags: [ 'console.command' ]
+
+# add more services, or override services that need manual wiring
+#    ImportBundle\ExampleClass:
+#        arguments:
+#            - "@service_id"
+#            - "plain_value"
+#            - "%parameter%"
+
+    ImportBundle\Service\ArrayChunkSplitter:
+        arguments:
+            - "firewall_import.array_chunk_splitter"
+        public: true
