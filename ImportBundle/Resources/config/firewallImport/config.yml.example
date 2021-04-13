@@ -1,0 +1,4 @@
+firewall_import:
+    import_file_location:
+        product_directory: '/var/www/html/pimcore/var/dataimport/tiers'
+        product_directory_default_file: '/var/www/html/pimcore/var/dataimport/tiers/master_tiers_df_v1'

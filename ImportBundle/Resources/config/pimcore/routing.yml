@@ -1,0 +1,3 @@
+firewall_import_homepage:
+    path:     /firewall_import
+    defaults: { _controller: ImportBundle:Default:index }
