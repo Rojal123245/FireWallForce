@@ -1,0 +1,4 @@
+firewall_import:
+    import_file_location:
+        product_directory: '/home/ishwar/Downloads/firewall/products/'
+        product_directory_default_file: '/home/ishwar/Downloads/firewall/products/PIM-2Tablets_developerUpdate'

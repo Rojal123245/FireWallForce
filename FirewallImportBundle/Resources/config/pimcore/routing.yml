@@ -1,5 +1,0 @@
-firewall_import:
-    resource: "@FirewallImportBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
